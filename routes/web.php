@@ -11,6 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/login', 'Auth\LoginController@showLoginForm');
+Route::post('/login', 'Auth\LoginController@login');
+Route::post('/logout', 'Auth\LoginController@logout');
+
+Route::group(['middleware' => 'web'], function () {
+
+    Route::get('/', function () {
+        return redirect()->to('/login');
+    });
+
+    Route::get('/', 'HomeController@index');
+
 });
+
+Route::get('/home', 'HomeController@index');
