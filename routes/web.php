@@ -15,14 +15,13 @@ Route::get('/login', 'Auth\LoginController@showLoginForm');
 Route::post('/login', 'Auth\LoginController@login');
 Route::post('/logout', 'Auth\LoginController@logout');
 
-Route::group(['middleware' => 'web'], function () {
-
-    Route::get('/', function () {
-        return redirect()->to('/login');
-    });
-
-    Route::get('/', 'HomeController@index');
-
+Route::group([
+    'prefix'     => 'admin',
+    'middleware' => 'admin',
+    'namespace'  => 'Admin'
+], function () {
+    Route::get('/', 'AdminController@index');
+    Route::resource('/users', 'UserController');
 });
 
 Route::get('/home', 'HomeController@index');

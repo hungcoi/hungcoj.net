@@ -1,0 +1,32 @@
+#page-wrapper {
+    nav.navbar.navbar-static-top {
+        margin-bottom: 0px;
+        min-height: 25px;
+        a.navbar-minimalize.minimalize-styl-2 {
+            padding: 1px 8px;
+            margin: 4px 5px 5px 20px;
+        }
+        a.logout-btn {
+            padding: 5px 0!important;
+            min-height: 30px!important;
+        }
+    }
+    table td, th {
+        vertical-align: middle!important;
+    }
+    .common-datatable th {
+        color: #000000;
+        font-weight: bold;
+    }
+    div#page-content {
+        padding-bottom: 50px;
+        margin-left: 15px;
+        margin-right: 10px;
+    }
+}
+.footable-page.active a {
+    font-weight: bold;
+}
+.displayNone {
+    display: none !important;
+}

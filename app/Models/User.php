@@ -16,7 +16,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'role',
+        'password',
     ];
 
     /**
@@ -28,7 +31,18 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function setPasswordAttribute($password) {
+    public function setPasswordAttribute($password)
+    {
         $this->attributes['password'] = Hash::make($password);
+    }
+
+    public function isAdmin()
+    {
+        return $this->role == config('common.user.role.admin');
+    }
+
+    public function isMember()
+    {
+        return $this->role == config('common.user.role.member');
     }
 }
